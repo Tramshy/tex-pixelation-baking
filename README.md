@@ -12,6 +12,13 @@ Before baking, check your render settings. You don't have to worry about most re
 
 To use the add-on, simply press 'N' and you can access the add-on settings under the `Tool` sub-menu. After adjusting the settings, select all objects you want to pixelate and press `Pixelate and Bake`. This will result in each object getting a new texture created and saved at your specified save location.
 
+## Installation
+1. Press the `Code` drop-down button
+2. Press `Download ZIP` and store wherever you want
+3. Open Blender and press `Edit (in the top left) -> Preferences -> Add-ons -> Install`
+4. Find the `ZIP` file and double click it
+5. Click on the checkbox next to the add-on
+
 ## IMPORTANT
 Make sure all objects have unique names, or certain textures will be overwritten!
 
