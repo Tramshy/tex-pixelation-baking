@@ -37,7 +37,10 @@ class ButtonOperator(bpy.types.Operator):
         batches = properties.batches
         
         # Run the function
-        asyncio.run(apply_pixelation_bake.bake_in_batches(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res, batches))
+        if properties.should_batch:
+            asyncio.run(apply_pixelation_bake.bake_in_batches(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res, batches))
+        else:
+            asyncio.run(apply_pixelation_bake.apply_pixelation_and_bake(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res))
         
         return {'FINISHED'}
 
