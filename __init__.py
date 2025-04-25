@@ -10,6 +10,7 @@ bl_info = {
 
 import bpy
 import asyncio
+import time
 from bpy.types import (Panel, Operator)
 from bpy.props import StringProperty, IntProperty, BoolProperty, PointerProperty
 from bpy.utils import register_class, unregister_class
@@ -39,13 +40,18 @@ class ButtonOperator(bpy.types.Operator):
             
             return {'CANCELLED'}
         
+        start_time = time.time()
+        
         # Run the function
         if properties.should_batch:
             asyncio.run(apply_pixelation_bake.bake_in_batches(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res, batches))
         else:
             asyncio.run(apply_pixelation_bake.apply_pixelation_and_bake(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res))
         
-        self.report({'INFO'}, "Baking complete! Textures saved at: " + output_dir)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        
+        self.report({'INFO'}, f"Baking complete after: {round(elapsed_time, 2)} seconds! Textures saved at: " + output_dir)
         
         return {'FINISHED'}
 
