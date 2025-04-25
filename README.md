@@ -1,2 +1,2 @@
 # Pixelation Baking
-Pixelation Baking An add-on for Blender that pixelates, bakes and saves the base color textures of selected objects
+An add-on for Blender that pixelates, bakes and saves the base color textures of selected objects
