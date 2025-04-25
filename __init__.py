@@ -42,7 +42,7 @@ class ButtonOperator(bpy.types.Operator):
         else:
             asyncio.run(apply_pixelation_bake.apply_pixelation_and_bake(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res))
         
-        self.report({'INFO'}, "Baking complete! Textures saved at: " + output_directory)
+        self.report({'INFO'}, "Baking complete! Textures saved at: " + output_dir)
         
         return {'FINISHED'}
 
