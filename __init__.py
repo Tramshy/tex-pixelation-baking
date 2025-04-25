@@ -14,7 +14,10 @@ import bpy
 import asyncio
 from bpy.types import (Panel, Operator)
 from bpy.props import StringProperty, IntProperty, BoolProperty, PointerProperty
+from bpy.utils import register_class, unregister_class
 from . import apply_pixelation_bake
+from .append_pixelation_group import append_from_asset
+
 # REMOVE
 import importlib
 
@@ -114,8 +117,6 @@ class AddonProperties(bpy.types.PropertyGroup):
         default=False
     )
 
-from bpy.utils import register_class, unregister_class
-
 _classes = [
     ButtonOperator,
     PixelationPanel,
@@ -127,7 +128,9 @@ def register():
         register_class(cls)
         
     bpy.types.Scene.pixelation_bake_settings = PointerProperty(type=AddonProperties)
-
+    
+    # Wait to let main Blender thread load node_groups in bpy.data.
+    bpy.app.timers.register(append_from_asset)
 
 def unregister():
     for cls in _classes:
