@@ -5,8 +5,6 @@ bl_info = {
     "blender": (4, 1, 0),
     "location": "View3D > N",
     "description": "Pixelates and bakes base color of selected objects",
-    "warning": "",
-    "doc_url": "",
     "category": "UV"
 }
 
@@ -18,17 +16,13 @@ from bpy.utils import register_class, unregister_class
 from . import apply_pixelation_bake
 from .append_pixelation_group import append_from_asset
 
-# REMOVE
-import importlib
-
-importlib.reload(apply_pixelation_bake)
-
 class ButtonOperator(bpy.types.Operator):
     """Tooltip"""
     bl_idname = "pixelation.1"
     bl_label = "Pixelation Operator"
 
     def execute(self, context):
+        # From AddonProperties
         properties = context.scene.pixelation_bake_settings
         
         # Define parameters

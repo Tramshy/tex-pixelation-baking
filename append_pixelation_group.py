@@ -12,8 +12,8 @@ def append_from_asset():
     
     addon_dir = os.path.dirname(__file__)
     blend_path = os.path.join(addon_dir, "assets/pixelation_assets.blend")
-    node_group_path = os.path.join(blend_path, "NodeTree")
     
+    # Load in pixelation node group from .blend file to current .blend file.
     with bpy.data.libraries.load(blend_path, link=False) as (data_from, data_to):
         if PIXELATION in data_from.node_groups:
             data_to.node_groups = [PIXELATION]
