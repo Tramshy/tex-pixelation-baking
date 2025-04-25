@@ -96,8 +96,6 @@ async def apply_pixelation_and_bake(models, pixelation_node_name, output_directo
     bake_settings.use_pass_color = start_pass_color
     scene.cycles.samples = start_samples
     
-    self.report({'INFO'}, "Baking complete! Textures saved at: " + output_directory)
-
 def split_list(input_list, batch_size):
     return [input_list[i:i + batch_size] for i in range(0, len(input_list), batch_size)]
 
