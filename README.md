@@ -8,7 +8,7 @@ An add-on for Blender that pixelates, bakes and saves the base color textures of
 * Allows for batching to help the baking process
 
 ## Usage
-Before baking, check your render settings. You don't have to worry about most render settings, as they will be set and reset automatically when using the add-on, but you must manually decide to use either the CPU or GPU. I recommend for most people to use the GPU, but it depends somewhat from computer to computer and how many objects are being processed at once. To do this you first have to switch your `Render Engine` from `Eevee` to `Cycles`, then switch from CPU to GPU Compute.
+Before baking, check your render settings. You will not have to worry about most render settings, as they will be set and reset automatically when using the add-on, but you must manually decide to use either the CPU or GPU. I have found the best results with the CPU, but it depends somewhat from computer to computer and how many objects are being processed at once. To switch between the two, you first have to switch your `Render Engine` from `Eevee` to `Cycles`, then you can switch between CPU and GPU Compute.
 
 To use the add-on, simply press 'N' and you can access the add-on settings under the `Tool` sub-menu. After adjusting the settings, select all objects you want to pixelate and press `Pixelate and Bake`. This will result in each object getting a new texture created and saved at your specified save location.
 
@@ -19,7 +19,10 @@ To use the add-on, simply press 'N' and you can access the add-on settings under
 4. Find the `ZIP` file and double click it
 5. Click on the checkbox next to the add-on
 
-## IMPORTANT
+## Additional Notes
+If you have a large amount of objects to process at once, around 30 and above, it may actually be faster for you to just select a few objects at once and then repeat the process. However, this heavily depends on your bake resolution. For something like 256 it most likely is not worth it to do this, but at higher resolutions this could help.
+
+### IMPORTANT:
 Make sure all objects have unique names, or certain textures will be overwritten!
 
 ## License
