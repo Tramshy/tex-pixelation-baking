@@ -36,6 +36,12 @@ class ButtonOperator(bpy.types.Operator):
         t_res = properties.texture_resolution
         batches = properties.batches
         
+        # Make sure directory has been picked
+        if not output_dir:
+            self.report({'ERROR'}, "No save directory selected. Please pick a path to save baked textures.")
+            
+            return {'CANCELLED'}
+        
         # Run the function
         if properties.should_batch:
             asyncio.run(apply_pixelation_bake.bake_in_batches(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res, batches))
@@ -83,19 +89,23 @@ class AddonProperties(bpy.types.PropertyGroup):
     pixel_resolution: IntProperty(
         name="Pixelation Resolution",
         description="The new visual resolution of the base color.",
-        default=256
+        default=256,
+        min=1
     )
 
     texture_resolution: IntProperty(
         name="Texture Resolution",
         description="The size of the baked texture image.",
-        default=1024
+        default=1024,
+        min=1
     )
 
     batches: IntProperty(
         name="Batch Size",
         description="The size of each batch.",
-        default=2
+        default=2,
+        min=1,
+        max=10
     )
 
     should_batch: BoolProperty(
