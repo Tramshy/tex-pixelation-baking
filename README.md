@@ -18,10 +18,7 @@ To use the add-on, simply press 'N' and you can access the add-on settings under
 4. Find the `ZIP` file and double click it
 5. Click on the checkbox next to the add-on
 
-## Additional Notes
-If you have a large amount of objects to process at once, around 30 and above, it may actually be faster for you to just select a few objects at once and then repeat the process. However, this heavily depends on your bake resolution. For something like 256 it most likely is not worth it to do this, but at higher resolutions this could help.
-
-### IMPORTANT:
+## IMPORTANT:
 Make sure all objects have unique names, or certain textures will be overwritten!
 
 ## License
