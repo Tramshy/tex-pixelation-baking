@@ -112,13 +112,13 @@ async def apply_pixelation_and_bake(models, pixelation_node_name, output_directo
     bake_settings.use_pass_color = start_pass_color
     scene.cycles.samples = start_samples
     
-def split_list(input_list, batch_size):
-    return [input_list[i:i + batch_size] for i in range(0, len(input_list), batch_size)]
-
-async def bake_in_batches(objects, pixelation_node_group_name, output_dir, resolution, bake_resolution, batch_size):
-    batches = split_list(objects, batch_size)
-    
-    for batch in batches:
-        await apply_pixelation_and_bake(batch, pixelation_node_group_name, output_dir, resolution, bake_resolution)
-        
-        await asyncio.sleep(0.3)
+#def split_list(input_list, batch_size):
+#    return [input_list[i:i + batch_size] for i in range(0, len(input_list), batch_size)]
+#
+#async def bake_in_batches(objects, pixelation_node_group_name, output_dir, resolution, bake_resolution, batch_size):
+#    batches = split_list(objects, batch_size)
+#    
+#    for batch in batches:
+#        await apply_pixelation_and_bake(batch, pixelation_node_group_name, output_dir, resolution, bake_resolution)
+#        
+#        await asyncio.sleep(0.3)

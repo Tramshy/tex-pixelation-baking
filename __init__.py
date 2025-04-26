@@ -9,8 +9,8 @@ bl_info = {
 }
 
 import bpy
-import asyncio
 import time
+import asyncio
 from bpy.types import (Panel, Operator)
 from bpy.props import StringProperty, IntProperty, BoolProperty, PointerProperty
 from bpy.utils import register_class, unregister_class
@@ -32,7 +32,6 @@ class ButtonOperator(bpy.types.Operator):
         output_dir = properties.directory_path
         p_res = properties.pixel_resolution
         t_res = properties.texture_resolution
-        batches = properties.batches
         
         # Make sure directory has been picked
         if not output_dir:
@@ -43,10 +42,7 @@ class ButtonOperator(bpy.types.Operator):
         start_time = time.time()
         
         # Run the function
-        if properties.should_batch:
-            asyncio.run(apply_pixelation_bake.bake_in_batches(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res, batches))
-        else:
-            asyncio.run(apply_pixelation_bake.apply_pixelation_and_bake(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res))
+        asyncio.run(apply_pixelation_bake.apply_pixelation_and_bake(models_to_process, pixelation_node_group_name, output_dir, p_res, t_res))
         
         end_time = time.time()
         elapsed_time = end_time - start_time
@@ -75,10 +71,6 @@ class PixelationPanel(bpy.types.Panel):
         layout.prop(properties, "texture_resolution")
         layout.separator()
         
-        layout.prop(properties, "should_batch")
-        layout.prop(properties, "batches")
-        layout.separator()
-        
         row = layout.row()
         row.operator(ButtonOperator.bl_idname, text="Pixelate and Bake")
 
@@ -101,20 +93,6 @@ class AddonProperties(bpy.types.PropertyGroup):
         description="The size of the baked texture image.",
         default=1024,
         min=1
-    )
-
-    batches: IntProperty(
-        name="Batch Size",
-        description="The size of each batch.",
-        default=2,
-        min=1,
-        max=10
-    )
-
-    should_batch: BoolProperty(
-        name="Enable Batching",
-        description="Batching means the objects will be split into several queues, between each queue a small break will occur from the bnaking. This may help performance in some cases",
-        default=False
     )
 
 _classes = [
