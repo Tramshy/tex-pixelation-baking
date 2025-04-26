@@ -5,7 +5,6 @@ An add-on for Blender that pixelates, bakes and saves the base color textures of
 * Easily pixelated textures
 * Allows for multiple objects to be queued together and baked
 * Easily adjustable settings
-* Allows for batching to help the baking process
 
 ## Usage
 Before baking, check your render settings. You will not have to worry about most render settings, as they will be set and reset automatically when using the add-on, but you must manually decide to use either the CPU or GPU. I have found the best results with the CPU, but it depends somewhat from computer to computer and how many objects are being processed at once. To switch between the two, you first have to switch your `Render Engine` from `Eevee` to `Cycles`, then you can switch between CPU and GPU Compute.
