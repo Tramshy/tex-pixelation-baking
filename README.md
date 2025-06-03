@@ -22,4 +22,4 @@ To use the add-on, simply press 'N' and you can access the add-on settings under
 Make sure all objects have unique names, or certain textures will be overwritten!
 
 ## License
-This package is licensed under the MIT License. For more information read: `LICENSE`.
+This add-on is licensed under the MIT License. For more information read: `LICENSE`.
